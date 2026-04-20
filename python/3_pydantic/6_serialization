@@ -1,0 +1,44 @@
+from pydantic import BaseModel, Field
+from typing import Optional, Dict
+
+# serialization is the process of converting a Pydantic object into a format that can be easily stored or transmitted, such as JSON or XML
+class input(BaseModel):
+
+    query : str = Field(..., description="this is the query")
+
+
+class output(BaseModel):
+
+    query : str = Field(..., description="this is the query")
+    result : str = Field(..., description="this is the response")
+
+def process_data (para_input:input) -> output:
+    # process the input data and generate a response
+    input_query = para_input.query
+    result = "Hello World!"
+
+    pyd_output = output(**{"query": input_query, "result": result})
+
+    return pyd_output
+
+input_data = input(**{"query": "What is the meaning of life?"})
+
+response = process_data(input_data)
+
+# print("Query:", response.query)
+# print("Result:", response.result)
+
+print(response) # this result is in the form of a Pydantic object
+
+print("--------------------------------------------------")
+
+#print (response.json()) # this result is in the form of a JSON string
+#print (response.dict()) # this result is in the form of a dictionary
+
+print(response.model_dump_json()) # this result is in the form of a JSON string using model_dump_json method
+print("--------------------------------------------------")
+print(response.model_dump()) # this result is in the form of a dictionary using model_dump method
+
+
+
+

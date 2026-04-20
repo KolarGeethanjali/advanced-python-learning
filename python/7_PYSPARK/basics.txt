@@ -1,0 +1,19 @@
+what is spark?
+A distributed computing engine that distributes data and process across a cluster of machines. It is designed to handle large-scale data processing and analytics tasks efficiently.
+
+spark architecture
+Spark follows a master-slave architecture. The main components of Spark architecture include:
+1. Driver Program: The driver program is the main entry point of a Spark application. Its responsible for orchestrating the execution of tasks and managing the overall application lifecycle.
+2. Cluster Manager: The cluster manager is responsible for managing the resources of the cluster and allocating them to Spark applications. Spark can work with various cluster managers, such as YARN, Mesos, and Kubernetes.
+3. Executors: Executors are the worker processes that run on the cluster nodes. They are responsible for executing the tasks assigned by the driver program and returning the results back to the driver.
+4. Tasks: Tasks are the units of work that are executed by the executors. Each task performs a specific operation on a partition of the data.  
+
+Spark WHY? benefits
+In memory computation: Spark can perform computations in memory, which significantly improves the performance of iterative algorithms and interactive data analysis.
+Lazy evaluation: Spark uses lazy evaluation, which means that it only executes the transformations when an action is called. This allows Spark to optimize the execution plan and reduce unnecessary computations.
+Fault tolerance: Spark automatically recovers from failures by re-executing the failed tasks on other nodes in the cluster. This ensures that the application can continue running even in the presence of hardware or software failures.
+partitioning: Spark can partition the data across the cluster, allowing for parallel processing and improved performance. This is especially beneficial for large datasets that cannot fit into memory on a single machine.
+
+Data Reaading in Spark
+
+SHEMA - DDL and structType()

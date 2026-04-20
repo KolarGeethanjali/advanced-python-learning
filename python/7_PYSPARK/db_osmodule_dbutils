@@ -1,0 +1,7 @@
+
+dbutils.fs.mv(
+    "dbfs:/Volumes/pyspark_learning/basic/big_mart_sales_vol/BigMart Sales.csv",
+    "dbfs:/Volumes/pyspark_learning/basic/big_mart_sales_vol/bigmart_sales.csv"
+)
+
+this is for moving the file from one location to another in dbfs. we can also use the same command for renaming the file as well.

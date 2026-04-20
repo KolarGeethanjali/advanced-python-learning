@@ -1,0 +1,41 @@
+from pydantic import BaseModel, Field, model_validator
+from typing import Optional, Dict, Any
+
+# inherience in pydantic allows you to create new models that inherit from existing models, allowing you to reuse fields and validation logic
+
+class addrress(BaseModel):
+    street : str = Field(..., description="Street address")
+    city : str = Field(..., description="City")
+    state : str = Field(..., description="State")
+    zip_code : str = Field(..., description="Zip code")
+
+class personal_info(BaseModel):
+    name : str = Field(..., description="Name of the person")
+    age : int = Field(..., gt=0, description="Age of the person")
+    email : str = Field(..., description="Email address of the person")
+    address : addrress = Field(..., description="Address of the person")
+
+pyd_ins = personal_info(**{
+    "name":"geethanjali",
+    "age":25,
+    "email":"geethanjali@gmail.com",
+    "address": addrress(**{
+        "street":"123 Main St",
+        "city":"Anytown",
+        "state":"CA",
+        "zip_code":"12345"
+    })
+})
+
+print (pyd_ins)
+
+def main(para:personal_info):
+    print("name:", para.name)
+    print("age:", para.age)
+    print("email:", para.email)
+    print("street:", para.address.street)
+    print("city:", para.address.city)
+    print("state:", para.address.state)
+    print("zip_code:", para.address.zip_code)
+
+main(pyd_ins)
